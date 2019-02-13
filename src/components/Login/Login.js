@@ -10,6 +10,11 @@ class Login extends Component {
     }
   }
 
+  handleLogin = () => {
+    this.props.toggleLoginModal()
+    this.props.toggleLog()
+  }
+
   render(){
     return(
       <div className="login-wrapper">
@@ -19,7 +24,7 @@ class Login extends Component {
           <input />
           <p>Password</p>
           <input />
-          <button>Login</button>
+          <button onClick={this.handleLogin}>Login</button>
         </div>
       </div>
     )

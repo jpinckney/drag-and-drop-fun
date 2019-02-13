@@ -10,14 +10,31 @@ import './App.css';
 
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      loggedIn: false
+    }
+  }
+
+  toggleLog = () => {
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header toggleLog={this.toggleLog}/>
         <Switch>
-          <Route path="/new-event" exact component={NewEvent} />
-          <Route path="/events" exact component={Events}/>
-          <Route path="/events/:id" component={EventDetails}/>
+          { this.state.loggedIn &&
+            <div>
+              <Route path="/new-event" exact component={NewEvent} />
+              <Route path="/events" exact component={Events}/>
+              <Route path="/events/:id" component={EventDetails}/>
+            </div>
+          }
         </Switch>
         <Footer />
       </div>
