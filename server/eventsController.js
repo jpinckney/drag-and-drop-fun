@@ -26,6 +26,7 @@ let people = [
 
 module.exports = {
   getEvents: (req, res) => {
+    console.log('hit')
     res.status(200).send({events:events, people:people})
   },
   swapEventPosition: (req, res) => {
@@ -45,7 +46,8 @@ module.exports = {
     res.status(200).send({events:events, people:people})
   },
   searchForEvent: (req, res) => {
-    let eventSearched = req.params.event
+    console.log(req.query)
+    let eventSearched = req.query.search
 
     let filteredEvents = events.filter((event) => {
       return event.name.includes(eventSearched)

@@ -60,7 +60,7 @@ class Events extends Component {
       this.getEvents()
       return
     }
-    axios.get(`/api/searchForEvent/${e.target.value}`).then((res) => {
+    axios.get(`/api/searchForEvent?search=${e.target.value}`).then((res) => {
       this.setState({events:res.data})
     })
   }

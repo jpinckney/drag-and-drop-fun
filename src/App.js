@@ -18,6 +18,7 @@ class App extends Component {
   }
 
   toggleLog = () => {
+    console.log(this.state.loggedIn)
     this.setState({
       loggedIn: !this.state.loggedIn
     })
@@ -30,8 +31,8 @@ class App extends Component {
         <Switch>
           { this.state.loggedIn &&
             <div>
+              <Route path="/" exact component={Events}/>
               <Route path="/new-event" exact component={NewEvent} />
-              <Route path="/events" exact component={Events}/>
               <Route path="/events/:id" component={EventDetails}/>
             </div>
           }
