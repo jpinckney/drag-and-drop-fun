@@ -1,13 +1,20 @@
 const express = require('express');
-const eventsController = require('./eventsController');
+const massive = require('massive');
+const config = require('./config.js');
 
 const app = express();
-app.use(express.json()); //this add the body object to req ie req.body
 
-app.get('/api/getEvents', eventsController.getEvents)
-app.get('/api/searchForEvent', eventsController.searchForEvent)
-app.put('/api/swapEventPosition', eventsController.swapEventPosition)
+app.use(express.json());
 
-app.listen(8080, () =>
-  console.log(`Listening on port ${8080}`)
-);
+massive(config.connection).then( db => {
+  app.set('db', db)
+  
+  const eventsController = require('./eventsController');
+  app.get('/api/getEvents', eventsController.getEvents);
+  app.put('/api/swapEventPosition', eventController.swapEventPosition);
+  app.get('/api/searchForEvent', eventController.searchForEvent);
+  
+  app.listen(8080, () =>
+    console.log(`Listening on port ${8080}`)
+  );
+})

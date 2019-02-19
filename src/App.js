@@ -13,7 +13,7 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      loggedIn: false
+      loggedIn: true
     }
   }
 
@@ -28,15 +28,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header toggleLog={this.toggleLog}/>
-        <Switch>
           { this.state.loggedIn &&
-            <div>
+            <Switch>
               <Route path="/" exact component={Events}/>
               <Route path="/new-event" exact component={NewEvent} />
               <Route path="/events/:id" component={EventDetails}/>
-            </div>
+            </Switch>
           }
-        </Switch>
         <Footer />
       </div>
     );
