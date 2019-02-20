@@ -6,6 +6,7 @@ import Events from './components/Events/Events.js';
 import EventDetails from './components/EventDetails/EventDetails.js';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Login from './components/Login/Login';
 import './App.css';
 
 
@@ -28,13 +29,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header toggleLog={this.toggleLog}/>
-          { this.state.loggedIn &&
             <Switch>
-              <Route path="/" exact component={Events}/>
+              <Route path="/" exact component={Login}/>
+              <Route path="/events" exact component={Events}/>
               <Route path="/new-event" exact component={NewEvent} />
               <Route path="/events/:id" component={EventDetails}/>
             </Switch>
-          }
         <Footer />
       </div>
     );

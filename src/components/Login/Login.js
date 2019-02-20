@@ -6,24 +6,25 @@ class Login extends Component {
   constructor(props){
     super(props)
     this.state = {
-
+      username: '',
+      Password: ''
     }
+
+    this.handleLogin = this.handleLogin.bind(this)
   }
 
-  handleLogin = () => {
-    this.props.toggleLoginModal()
-    this.props.toggleLog()
+  handleLogin() {
+
   }
 
   render(){
     return(
       <div className="login-wrapper">
         <div style={{position:"relative"}}>
-          <p onClick={this.props.toggleLoginModal} style={{position:"absolute", top:"-10px", left:"10px"}}>x</p>
           <p>Username</p>
-          <input />
+          <input onChange={(e)=>this.setState({username:e.target.value})} />
           <p>Password</p>
-          <input />
+          <input onChange={(e)=>this.setState({password:e.target.value})}/>
           <button onClick={this.handleLogin}>Login</button>
         </div>
       </div>

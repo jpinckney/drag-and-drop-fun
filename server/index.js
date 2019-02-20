@@ -1,18 +1,19 @@
 const express = require('express');
 const massive = require('massive');
-const config = require('./config.js');
+require('dotenv').config();
 
 const app = express();
 
+const CONNECTION = process.env.CONNECTION
+
 app.use(express.json());
 
-massive(config.connection).then( db => {
+massive(CONNECTION).then( db => {
   app.set('db', db)
   
   const eventsController = require('./eventsController');
   app.get('/api/getEvents', eventsController.getEvents);
-  app.put('/api/swapEventPosition', eventController.swapEventPosition);
-  app.get('/api/searchForEvent', eventController.searchForEvent);
+  app.get('/api/searchForEvent', eventsController.searchForEvent);
   
   app.listen(8080, () =>
     console.log(`Listening on port ${8080}`)

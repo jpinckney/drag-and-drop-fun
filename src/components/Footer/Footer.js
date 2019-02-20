@@ -12,8 +12,8 @@ class Footer extends Component {
 
   render(){
     return(
-      <div>
-
+      <div style={{width:'100%', height:"50px", background:"#333", color:"white"}}>
+        I am a footer!
       </div>
     )
   }

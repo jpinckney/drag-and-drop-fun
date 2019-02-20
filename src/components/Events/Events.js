@@ -54,17 +54,9 @@ class Events extends Component {
     })
   }
 
-  lookAtE = (e) => {
-    console.log(Object.assign({}, e))
-  }
-
   buildEventJSX(event){
     return(
       <div 
-        onClick={this.lookAtE}
-        draggable="true" 
-        onDragStart={() => this.recordDragStartEvent(event.id)} 
-        onDragOver={() => this.recordDragOverEvent(event.id)}
         className="events_event-wrapper"
       >
         <p>{event.name}</p>
@@ -76,7 +68,7 @@ class Events extends Component {
     let events = this.state.events.map(this.buildEventJSX)
     return(
       <div>
-        <input onKeyDown={this.lookAtE}/>
+        <input onChange={this.searchForEvent}/>
         {events}
       </div>
     )
