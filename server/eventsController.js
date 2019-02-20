@@ -56,5 +56,14 @@ module.exports = {
     })
 
     res.status(200).send(filteredEvents)
+  },
+  createEvent:(req, res)=>{
+    const db = req.app.get('db')
+    const {eventName} = req.body
+    const {id, username} = req.session.user
+
+    db.createEvent([id, username, eventName]).then((event)=>{
+      console.log(event)
+    })
   }
 }

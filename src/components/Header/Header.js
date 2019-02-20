@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
-import Login from './../Login/Login';
 import './Header.css'
 
 class Header extends Component {
