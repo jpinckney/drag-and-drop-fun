@@ -44,17 +44,6 @@ class Events extends Component {
     })
   }
 
-  buildEventJSX(event){
-    return(
-      <div draggable="true" onDragStart={() => this.recordDragStartEvent(event.id)} 
-        onDragOver={() => this.recordDragOverEvent(event.id)}
-        className="events_event-wrapper"
-      >
-        <p>{event.name}</p>
-      </div>
-    )
-  }
-
   searchForEvent = (e) => {
     if(e.target.value === ""){
       this.getEvents()
@@ -63,6 +52,16 @@ class Events extends Component {
     axios.get(`/api/searchForEvent?search=${e.target.value}`).then((res) => {
       this.setState({events:res.data})
     })
+  }
+
+  buildEventJSX(event){
+    return(
+      <div 
+        className="events_event-wrapper"
+      >
+        <p>{event.name}</p>
+      </div>
+    )
   }
 
   render(){

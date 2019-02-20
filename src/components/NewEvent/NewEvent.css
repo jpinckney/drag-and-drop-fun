@@ -1,0 +1,11 @@
+.new-event-wrapper div{
+  width: 320px;
+  padding: 50px;
+  background: #555;
+  margin: 0 auto 30px auto;
+
+}
+
+.new-event-wrapper input{
+  margin-bottom: 20px;
+}

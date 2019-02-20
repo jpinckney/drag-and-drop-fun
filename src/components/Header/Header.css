@@ -5,6 +5,7 @@
   justify-content: space-between;
 }
 .header_wrapper h1{
+  color: #ccc;
   font-size: 30px;
   padding: 20px;
 }

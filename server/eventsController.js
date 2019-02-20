@@ -1,3 +1,4 @@
+
 let events = [
   {
     id: 10,
@@ -26,9 +27,9 @@ let people = [
 
 module.exports = {
   getEvents: (req, res) => {
-    console.log('hit')
     res.status(200).send({events:events, people:people})
   },
+
   swapEventPosition: (req, res) => {
 
     let sId = req.body.startElementId
@@ -45,6 +46,7 @@ module.exports = {
 
     res.status(200).send({events:events, people:people})
   },
+
   searchForEvent: (req, res) => {
     console.log(req.query)
     let eventSearched = req.query.search
@@ -54,5 +56,14 @@ module.exports = {
     })
 
     res.status(200).send(filteredEvents)
+  },
+  createEvent:(req, res)=>{
+    const db = req.app.get('db')
+    const {eventName} = req.body
+    const {id, username} = req.session.user
+
+    db.createEvent([id, username, eventName]).then((event)=>{
+      console.log(event)
+    })
   }
 }
